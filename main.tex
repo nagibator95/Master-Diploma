@@ -1,0 +1,86 @@
+
+% 1. Стиль и язык
+\documentclass[utf8x]{G7-32} % Стиль (по умолчанию будет 14pt)
+\usepackage[T2A]{fontenc}
+\usepackage[russian]{babel}
+
+% Псевдокод
+\usepackage[]{algorithm2e}
+\newenvironment{rualgorithm}[1][htb]
+  {\renewcommand{\algorithmcfname}{Алгоритм}% Update algorithm name
+   \begin{algorithm}[#1]%
+  }{\end{algorithm}}
+
+% Фикс отступа в оглавлении
+\makeatletter
+\renewcommand*\l@subsection{\@dottedtocline{1}{2em}{3.0em}}
+\makeatother
+
+% Остальные стандартные настройки убраны в preamble.inc.tex.
+\include{preamble.inc}
+
+% Настройки листингов.
+\include{listings.inc}
+
+% Полезные макросы листингов.
+\include{macros.inc}
+
+% Сквозная нумерация
+\usepackage{chngcntr}
+\counterwithout{figure}{chapter}
+\counterwithout{table}{chapter}
+
+
+\title{Diploma}
+\author{chesterlanduk }
+\date{May 2019}
+
+\begin{document}
+
+\frontmatter
+\setcounter{page}{2}
+
+% Убрать токи в оглавлении
+\makeatletter
+\renewcommand{\@dotsep}{10000} 
+\makeatother
+
+\tableofcontents
+
+
+% \maketitle
+
+\Introduction
+\input{00-intro.tex}
+
+\mainmatter % это включает нумерацию глав и секций в документе ниже
+
+% \input{0-1-literaly-review.tex}
+
+\input{1-formulation.tex}
+
+\input{2-software.tex}
+
+\input{2-2-queue.tex}
+
+\input{2-3-identifiers.tex}
+
+\input{2-4-submission-storage.tex}
+
+\input{2-5-monitors.tex}
+
+\input{2-6-moving.tex}
+
+
+\backmatter %% Здесь заканчивается нумерованная часть документа и начинаются ссылки и
+            %% заключение
+
+\chapter{Заключение}
+
+В работе использовалась система сиамских нейронных сетей, однако, в перспективе, будет возможно использовать динамическую маршрутизацию между нейронами для уменьшения ошибок распознавания объектов, например, в случаях, когда пользователь расположил смартфон «вверх ногами».
+Описанная система подходит для случаев, когда число пользователей невелико, например, для "мобильного девайса", когда число пользователей ограничено (например, в IPhone, максимальное число отпечатков - 10 для touch id или 2 для face id). 
+Метод применим для распознавания подписи человека и в перспективе возможно его использование в программном обеспечении для авторизации пользователя.
+
+\input{8-0-biblio.tex}
+
+\end{document}
