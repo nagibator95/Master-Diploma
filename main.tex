@@ -13,7 +13,9 @@
 
 % Фикс отступа в оглавлении
 \makeatletter
-\renewcommand*\l@subsection{\@dottedtocline{1}{2em}{3.0em}}
+\renewcommand*\l@chapter{\@dottedtocline{1}{0cm}{1.0em}}
+\renewcommand*\l@section{\@dottedtocline{1}{0.5cm}{2.0em}}
+\renewcommand*\l@subsection{\@dottedtocline{1}{1cm}{3.0em}}
 \makeatother
 
 % Остальные стандартные настройки убраны в preamble.inc.tex.
@@ -41,21 +43,19 @@
 \setcounter{page}{2}
 
 % Убрать токи в оглавлении
-\makeatletter
-\renewcommand{\@dotsep}{10000} 
-\makeatother
+% \makeatletter
+% \renewcommand{\@dotsep}{10000} 
+% \makeatother
 
 \tableofcontents
 
-
-% \maketitle
-
-\Introduction
 \input{00-intro.tex}
 
 \mainmatter % это включает нумерацию глав и секций в документе ниже
 
 % \input{0-1-literaly-review.tex}
+
+\input{0-1-literal.tex}
 
 \input{1-formulation.tex}
 
@@ -70,6 +70,8 @@
 \input{2-5-monitors.tex}
 
 \input{2-6-moving.tex}
+
+\input{2-7-conclusion.tex}
 
 
 \backmatter %% Здесь заканчивается нумерованная часть документа и начинаются ссылки и
