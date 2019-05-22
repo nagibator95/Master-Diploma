@@ -32,6 +32,32 @@
 \counterwithout{figure}{chapter}
 \counterwithout{table}{chapter}
 
+% Большие буквы в названии библиографии
+\makeatletter
+\renewenvironment{thebibliography}[1]
+     {\chapter{\MakeUppercase\bibname}% <-- this line was changed from \chapter* to \section*
+      \@mkboth{\MakeUppercase\bibname}{\MakeUppercase\bibname}%
+      \list{\@biblabel{\@arabic\c@enumiv}}%
+          {\settowidth\labelwidth{\@biblabel{#1}}%
+            \leftmargin\labelwidth
+            \advance\leftmargin\labelsep
+            \@openbib@code
+            \usecounter{enumiv}%
+            \let\p@enumiv\@empty
+            \renewcommand\theenumiv{\@arabic\c@enumiv}}%
+      \sloppy
+      \clubpenalty4000
+      \@clubpenalty \clubpenalty
+      \widowpenalty4000%
+      \sfcode`\.\@m}
+     {\def\@noitemerr
+      {\@latex@warning{Empty `thebibliography' environment}}%
+      \endlist}
+\makeatother
+
+% \renewcommand\refname{СПИСОК ИСПОЛЬЗОВАННЫХ ИСТОЧНИКОВ}
+
+
 
 \title{Diploma}
 \author{chesterlanduk }
@@ -40,14 +66,15 @@
 \begin{document}
 
 \frontmatter
-\setcounter{page}{2}
+\setcounter{page}{7}
 
-% Убрать токи в оглавлении
-% \makeatletter
-% \renewcommand{\@dotsep}{10000} 
-% \makeatother
+% Убрать точки в оглавлении
+\makeatletter
+\renewcommand{\@dotsep}{10000} 
+\makeatother
 
-\tableofcontents
+
+% \tableofcontents
 
 \input{00-intro.tex}
 
@@ -75,13 +102,11 @@
 
 
 \backmatter %% Здесь заканчивается нумерованная часть документа и начинаются ссылки и
-            %% заключение
+            % заключение
 
-\chapter{Заключение}
+\input{4-0-conclusion.tex}
 
-В работе использовалась система сиамских нейронных сетей, однако, в перспективе, будет возможно использовать динамическую маршрутизацию между нейронами для уменьшения ошибок распознавания объектов, например, в случаях, когда пользователь расположил смартфон «вверх ногами».
-Описанная система подходит для случаев, когда число пользователей невелико, например, для "мобильного девайса", когда число пользователей ограничено (например, в IPhone, максимальное число отпечатков - 10 для touch id или 2 для face id). 
-Метод применим для распознавания подписи человека и в перспективе возможно его использование в программном обеспечении для авторизации пользователя.
+\input{5-0-findings.tex}
 
 \input{8-0-biblio.tex}
 
